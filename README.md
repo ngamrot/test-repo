@@ -1,3 +1,10 @@
 # test-repo
+filmy 
 
-## Moje repo
+*Pamietnik
+
+*jak stracic chlopaka w 10 dni
+
+
+
+## Moje repo 2
