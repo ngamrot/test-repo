@@ -50,4 +50,7 @@ class Osoba(models.Model):
     class Meta:
         verbose_name_plural = "Osoby"
 
+# pozostała część klasy Person w pliku models.py została pominięta
 
+def __str__(self):
+    return self.name
