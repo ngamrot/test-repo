@@ -7,5 +7,6 @@ from . import views
 # definiujemy zmienną urlpatterns, która jest listą mapowań adresów URL na nasze widoki
 urlpatterns = [
     path("welcome", views.welcome_view),
-    path("persons", views.person_list)
+    path("persons", views.person_list),
+    path("person/<int:id>", views.person_detail),
 ]
