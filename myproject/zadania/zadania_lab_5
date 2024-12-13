@@ -1,0 +1,93 @@
+#Microsoft Windows [Version 10.0.26100.1742]
+#(c) Microsoft Corporation. All rights reserved.
+
+#C:\Users\ngamrot\Desktop\nowy>cd myproject
+
+#C:\Users\ngamrot\Desktop\nowy\myproject>python manage.py shell
+#Python 3.12.6 (tags/v3.12.6:a4a2d2b, Sep  6 2024, 20:11:23) [MSC v.1940 64 bit (AMD64)] on win32
+#Type "help", "copyright", "credits" or "license" for more information.
+#(InteractiveConsole)
+#>>> from myapp.models import Person, Team, Stanowiako, Osoba
+#Traceback (most recent call last):
+#  File "<console>", line 1, in <module>
+#ImportError: cannot import name 'Stanowiako' from 'myapp.models' (C:\Users\ngamrot\Desktop\nowy\myproject\myapp\models.py)
+#>>> from myapp.models import Person, Team, stanowiako, Osoba
+#Traceback (most recent call last):
+# File "<console>", line 1, in <module>
+#ImportError: cannot import name 'stanowiako' from 'myapp.models' (C:\Users\ngamrot\Desktop\nowy\myproject\myapp\models.py)
+#>>> from myapp.models import Person, Team, stanowisko, Osoba
+#Traceback (most recent call last):
+#  File "<console>", line 1, in <module>
+#ImportError: cannot import name 'stanowisko' from 'myapp.models' (C:\Users\ngamrot\Desktop\nowy\myproject\myapp\models.py)
+#>>> from myapp.models import Person, Team, Stanowisko, Osoba
+#>>> Person.objects.all()
+#<QuerySet [<Person: natalia>, <Person: ewa>]>
+#>>> lista_p = Person.objects.all()
+#>>> lista_p[0]                    
+#<Person: natalia>
+#>>> type(lista_p[0])
+#<class 'myapp.models.Person'>
+#>>> lista_p[0].age
+#20
+#>>> lista_p[0].team
+#<Team: krykiet>
+#>>>  Person.objects.get(id=1)
+#  File "<console>", line 1
+#    Person.objects.get(id=1)
+#IndentationError: unexpected indent
+#>>> Person.objects.get(id=1) 
+#<Person: natalia>
+#>>> Person.objects.filter(name='natalia')
+#<QuerySet [<Person: natalia>]>
+#>>> Person.objects.filter(shirt_size= 'M')
+#<QuerySet [<Person: natalia>, <Person: ewa>]>
+#>>> Person.objects.filter(age__gt=18)  
+#<QuerySet [<Person: natalia>, <Person: ewa>]>
+#>>> lista = Person.objects.all()          
+#>>> lista
+#<QuerySet [<Person: natalia>, <Person: ewa>]>
+#>>> lista[0].name                         
+#'natalia'
+#>>> lista[0].team
+#<Team: krykiet>
+#>>> lista[0].team.name
+#'krykiet'
+#>>> Person.objects.all().values()         
+#<QuerySet [{'id': 1, 'name': 'natalia', 'shirt_size': 'M', 'month_added': 11, 'team_id': 1, 'age': 20}, {'id': 2, 'name': 'ewa', 'shirt_size': 'M', 'month_added': 10, 'team_id': 1, 'age': 20}]>
+#>>> Person.objects.all().values('id', 'name')
+#<QuerySet [{'id': 1, 'name': 'natalia'}, {'id': 2, 'name': 'ewa'}]>
+#>>> Person.objects.filter(name__startswith='e')
+#<QuerySet [<Person: ewa>]>
+#>>> Person.objects.filter(name__contains='a')
+#<QuerySet [<Person: natalia>, <Person: ewa>]>
+#>>> Person.objects.filter(name__contains='lia')
+#<QuerySet [<Person: natalia>]>
+#>>> p1 = Person()        
+#>>> p1.name = 'Antoni'
+#>>> p1.shirt_size = 'L'
+#>>> p1.month_added = 2
+#>>> p1.team = 'krykiet'
+#Traceback (most recent call last):
+#  File "<console>", line 1, in <module>
+#  File "C:\Users\ngamrot\Desktop\nowy\.venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 266, in __set__
+#    raise ValueError(
+#ValueError: Cannot assign "'krykiet'": "Person.team" must be a "Team" instance.
+#>>> p1.age = '13'      
+#>>> p1.save()
+#>>> p1.id
+#3
+#>>> p1.__dict__
+#{'_state': <django.db.models.base.ModelState object at 0x0000019635CECB90>, 'id': 3, 'name': 'Antoni', 'shirt_size': 'L', 'month_added': 2, 'team_id': None, 'age': '13'}
+#>>> p1.age = '15'
+#>>> p1.save()    
+#>>> p1.id              
+#3
+#>>> p1.__dict__        
+#{'_state': <django.db.models.base.ModelState object at 0x0000019635CECB90>, 'id': 3, 'name': 'Antoni', 'shirt_size': 'L', 'month_added': 2, 'team_id': None, 'age': '15'}
+#>>> p1.delete()
+#(1, {'myapp.Person': 1})
+#>>> Person.objects.all()                       
+#<QuerySet [<Person: natalia>, <Person: ewa>]>
+#>>> Person.objects.count()
+#2
+#>>>
