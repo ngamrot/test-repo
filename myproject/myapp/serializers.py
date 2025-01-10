@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Person, Team, MONTHS, SHIRT_SIZES
+from .models import Person, Team, Osoba, MONTHS, SHIRT_SIZES
 
 
 class PersonSerializer(serializers.Serializer):
@@ -35,3 +35,10 @@ class PersonSerializer(serializers.Serializer):
         instance.team = validated_data.get('team', instance.team)
         instance.save()
         return instance
+    
+    
+class OsobaModelSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Osoba
+            fields = '__all__'
+            read_only_fields = ['id']
